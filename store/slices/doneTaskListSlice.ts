@@ -3,28 +3,28 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import Task from "@/models/Task";
 
 export interface TodoTaskListState {
-    value: Task[];
+    taskItems: Task[];
 }
 
 const initialState: TodoTaskListState = {
-    value: [],
+    taskItems: [],
 }
 
 export const doneTaskListSlice = createSlice({
     name: 'doneTaskList',
     initialState,
     reducers: {
-        addTodoTask: (state,action: PayloadAction<Task>) => {
-            state.value.push(action.payload);
+        addDoneTask: (state,action: PayloadAction<Task>) => {
+            state.taskItems.push(action.payload);
         },
-        removeTodoTask: (state,action: PayloadAction<Task>) => {
-            const index = state.value.indexOf(action.payload);
-            state.value.splice(index, 1);
+        removeDoneTask: (state,action: PayloadAction<Task>) => {
+            const index = state.taskItems.findIndex((task) => task.taskName === action.payload.taskName && task.taskDescription ===action.payload.taskDescription);
+            state.taskItems.splice(index, 1);
         },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTodoTask, removeTodoTask } = doneTaskListSlice.actions
+export const { addDoneTask, removeDoneTask } = doneTaskListSlice.actions
 
 export default doneTaskListSlice.reducer

@@ -1,5 +1,4 @@
-
-export default function TodoTaskTitle(){
+export default function TaskTitle(){
 
     return (
         <div className={"flex justify-center px-16 pt-16 pb-8"}>

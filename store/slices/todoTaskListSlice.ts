@@ -3,11 +3,15 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import Task from "@/models/Task";
 
 export interface TodoTaskListState {
-    value: Task[];
+    taskItems: Task[];
 }
 
 const initialState: TodoTaskListState = {
-    value: [],
+    taskItems: [
+        // {taskName:"Task 1", taskDescription:"Task 1"},
+        // {taskName:"Task 2", taskDescription:"Task 2"},
+        // {taskName:"Task 3", taskDescription:"Task 3"}
+    ],
 }
 
 export const todoTaskListSlice = createSlice({
@@ -15,11 +19,11 @@ export const todoTaskListSlice = createSlice({
     initialState,
     reducers: {
         addTodoTask: (state,action: PayloadAction<Task>) => {
-            state.value.push(action.payload);
+            const val = state.taskItems.push(action.payload);
         },
         removeTodoTask: (state,action: PayloadAction<Task>) => {
-            const index = state.value.indexOf(action.payload);
-            state.value.splice(index, 1);
+            const index = state.taskItems.findIndex((task) => task.taskName === action.payload.taskName && task.taskDescription ===action.payload.taskDescription);
+            state.taskItems.splice(index, 1);
         },
     },
 })

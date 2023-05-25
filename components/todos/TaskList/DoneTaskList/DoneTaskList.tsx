@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
-import DoneTaskItem from "@/components/todos/DoneTaskItem";
+import DoneTaskItem from "@/components/todos/TaskList/DoneTaskList/DoneTaskItem/DoneTaskItem";
 
 export default function DoneTaskList(){
     const taskItems = useSelector((state:RootState) => state.doneTaskList.taskItems);

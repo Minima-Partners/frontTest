@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
-import TodoTaskItem from "@/components/todos/TodoTaskItem";
+import TodoTaskItem from "@/components/todos/TaskList/TodoTaskList/TodoTaskItem/TodoTaskItem";
 
 export default function TodoTaskList(){
     const taskItems = useSelector((state:RootState) => state.todoTaskList.taskItems);
